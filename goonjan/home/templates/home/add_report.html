@@ -1,0 +1,26 @@
+{% extends 'main.html' %} 
+{% block title %}Add report{% endblock title %}
+{% block content %}
+<style>
+    input,select{
+        border: 2px solid black;
+        margin-bottom: 10px;
+        
+    }
+    label{
+        height: 30px;
+        vertical-align: top;
+    }
+</style>
+<div class="flex flex-col justify-center items-center">
+    <h1 class="text-2xl">Add Report</h1>
+    <form action="" method="post">
+        {% if request.user.is_staff %}
+        <a href="{% url 'add_patient' %}">Add Patient</a>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+        {% endif %}
+    </form>
+</div>
+ {% endblock content%} 

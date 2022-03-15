@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <style>
+      
+        .b-form input,textarea,.b-select{
+        border: 2px solid black;
+        margin-bottom: 10px;
+        }
+      
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    
+    <link href='https://cdn.jsdelivr.net/npm/froala-editor@4.0.8/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@4.0.8/js/froala_editor.pkgd.min.js'></script>
+    <title>Satra-{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{% url 'home' %}">
+            <span class="ml-3 text-xl">Satra</span>
+          </a>
+          <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+            <a href="/admin"class="mr-5 hover:text-gray-900">Admin site</a>
+            <a href="{% url 'logout' %}"class="mr-5 hover:text-gray-900">Log out</a>
+            <a href="{% url 'add_beneficiary' %}"class="mr-5 hover:text-gray-900">Add Beneficiary</a>
+            <a href="{% url 'export_beneficiary_temp' %}"class="mr-5 hover:text-gray-900">Export</a>
+            {% if request.user.is_staff%}
+            <a href="{% url 'add_report' %}"class="mr-5 hover:text-gray-900">Add Report</a>
+            {% endif %}
+          </nav>
+        </div>
+      </header>
+{% if messages %}
+  {% for message in messages %}
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-2" role="alert">
+    <strong class="font-bold">{{message.tags}}</strong>
+    <span class="block sm:inline">{{message}}</span>
+  </div>
+ {% endfor %}
+{% endif %}
+    {% block content %}{% endblock content %}
+</body>
+</html>

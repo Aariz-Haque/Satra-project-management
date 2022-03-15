@@ -1,0 +1,14 @@
+daily report
+
+submitted_by
+name_of_patients(if follow up)
+note_on_patient
+no._new_patients_identified
+name_of_new_patients
+action_planned_for_new_patient
+note_on_new_patient
+symptoms_of_new_patient
+other_notes
+place_visited
+purposes={patient follow up,patient counselling,caregiver counselling,awareness meeting,livelihood rehabilitation,monitoring,meeting with village level commitee,other}
+date_of_report

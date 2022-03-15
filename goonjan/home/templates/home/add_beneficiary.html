@@ -1,0 +1,224 @@
+{% extends 'main.html' %} 
+{% block title %}Add Beneficiary{% endblock title %}
+{% block content %}
+<div class="flex flex-col justify-center items-center">
+  <h1 class="text-2xl">Add Beneficiary</h1>
+  <p class="text-red-700 text-xl mb-4">Fields marked with * are compulsory</p>
+  <form method="post" action="" class='b-form' enctype="multipart/form-data">
+    {% csrf_token %} 
+    <div class="">
+      <label for="image" class="text-xl">Image</label>
+      <input type="file" name="image" accept="image/*" id="image" class="text-xl">
+    </div>
+    <div class="">
+      <label for="name" class="text-xl">Name <span class="text-red-700 text-xl">*</span></label>
+      <input type="text" name="name" id="name" class="text-xl">
+    </div>
+    <div class="">
+      <span class="text-xl">Gender</span> <span class="text-red-700 text-xl">*</span>
+      <label for="male" class="text-xl">Male</label>
+      <input type="radio" name="gender" id="male" class="text-xl" value="male">
+      <label for="female" class="text-xl">Female</label>
+      <input type="radio" name="gender" id="female" class="text-xl" value="female">
+      <label for="other" class="text-xl">Other</label>
+      <input type="radio" name="gender" id="other" class="text-xl" value="other">
+    </div>
+    <div class="">
+      <label for="dob" class="text-xl">DOB <span class="text-red-700 text-xl">*</span></label>
+      <input type="date" name="dob" id="dob" class="text-xl">
+    </div>
+    <div class="">
+      <label for="registrationdate" class="text-xl">Registration Date <span class="text-red-700 text-xl">*</span></label>
+      <input type="date" name="registrationDate" id="registrationdate" class="text-xl">
+    </div>
+    <div class="">
+      <label for="uora" class="text-xl">UID or Aadhaar</label>
+      <input type="text" name="uidOrAadhaar" id="uora" class="text-xl" maxlength="12">
+    </div>
+    <div class="">
+      <label for="cgname" class="text-xl">Care Giver's Name</label>
+      <input type="text" name="careGiversName" id="cgname" class="text-xl">
+    </div>
+    <div class="">
+      <label for="reletionship" class="text-xl">Reletionship</label>
+      <select name="reletionship" id="reletionship" class="b-select">
+        <option value="">----</option>
+        <option value="aunt">Aunt</option>
+        <option value="brother">Brother</option>
+        <option value="father">Father</option>
+        <option value="grandfather">Grandfather</option>
+        <option value="grandmother">Grandmother</option>
+        <option value="guardian">Guardian</option>
+        <option value="husband">Husband</option>
+        <option value="mother">Mother</option>
+        <option value="other">Other</option>
+        <option value="sister">Sister</option>
+        <option value="uncle">Uncle</option>
+        <option value="wife">Wife</option>
+      </select>
+    </div>
+    
+    <div class="">
+      <label for="beneficiarytype" class="text-xl">Beneficiary Type <span class="text-red-700 text-xl">*</span></label>
+      <select name="beneficiaryType" id="beneficiarytype" class="b-select">
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+        <option value="migrated">Migrated</option>
+        <option value="deceased">Deceased</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="beneficiarystatus" class="text-xl">Status of beneficiary <span class="text-red-700 text-xl">*</span></label>
+      <select name="statusOfBeneficiary" id="beneficiarystatus" class="b-select">
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="address" class="text-xl">Address</label><br>
+      <textarea name="address" id="address" class="text-xl"></textarea>
+    </div>
+    <div class="">
+      <label for="district" class="text-xl">District</label>
+      <input type="text" name="district" id="district" class="text-xl">
+    </div>
+    <div class="">
+      <label for="city" class="text-xl">City <span class="text-red-700 text-xl">*</span></label>
+      <input type="text" name="city" id="city" class="text-xl">
+    </div>
+    <div class="">
+      <label for="pinCode" class="text-xl">Pin Code</label>
+      <input type="text" name="pinCode" id="pinCode" class="text-xl">
+    </div>
+    <div class="">
+      <label for="adrstype" class="text-xl">Address Type</label>
+      <select name="addressType" id="adrstype" class="b-select">
+        <option value="">----</option>
+        <option value="residence">Residence</option>
+        <option value="office">Office</option>
+        <option value="permanent">Permanent</option>
+        <option value="present">Present</option>
+        <option value="communication">Communication</option>
+        <option value="native">Native</option>
+        <option value="relative">Relative</option>
+        <option value="temporary">Temporary</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="phone" class="text-xl">Phone no.</label>
+      <input type="tel" name="phone" id="phone" class="text-xl" maxlength="13">
+    </div>
+    <div class="">
+      <label for="email" class="text-xl">Email</label>
+      <input type="email" name="email" id="email" class="text-xl">
+    </div>
+    <div class="">
+      <label for="diagonisis" class="text-xl">Diagonisis <span class="text-red-700 text-xl">*</span></label>
+      <select name="diagonisis" id="diagonisis" class="b-select">
+        <option value="bipolar">Bipolar</option>
+        <option value="schizophrenia">Schizophrenia</option>
+        <option value="depression">Depression</option>
+        <option value="mania">Mania</option>
+        <option value="anxiety disorders">Anxiety Disorders</option>
+        <option value="panic disorder">Panic Disorder</option>
+        <option value="stress-related disorders">Stress-Related Disorders</option>
+        <option value="dissociative disorders">Dissociative Disorders</option>
+        <option value="dissociative amnesia">Dissociative Amnesia</option>
+        <option value="somatic Symptom disorder">Somatic Symptom Disorder</option>
+        <option value="insomnia disorder">Insomnia Disorder</option>
+        <option value="substance-related disorders">Substance-Related Disorders</option>
+        <option value="obsessive-compulsive disorders (ocd)">Obsessive-Compulsive Disorders (OCD)</option>
+        <option value="personality disorders">Personality Disorders</option>
+        <option value="paranoid personality disorder">Paranoid Personality Disorder</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="purposeOfVisit" class="text-xl">Purpose of Visit</label>
+      <select name="purposeOfVisit" id="purposeOfVisit" class="b-select">
+        <option value="counselling">Counselling</option>
+        <option value="mental health screening">Mental Health Screening</option>
+        <option value="care giver training">Care Giver Training</option>
+        <option value="livlihood training">Livlihood Training</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="educationHistory" class="text-xl">Education History <span class="text-red-700 text-xl">*</span></label>
+      <select name="educationHistory" id="educationHistory" class="b-select">
+        <option value="illiterate">Illiterate</option>
+        <option value="upto class v">Upto Class V</option>
+        <option value="upto class viii">Upto Class VIII</option>
+        <option value="under matric">Under Matric</option>
+        <option value="matriculation">Matriculation</option>
+        <option value="degree">Degree</option>
+        <option value="pg and above">PG and Above</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="familyMonthlyIncome" class="text-xl">Family Monthly Income</label>
+      <select name="familyMonthlyIncome" id="familyMonthlyIncome" class="b-select">
+        <option value="">----</option>
+        <option value="less than rs.2500">Less Than RS.2500</option>
+        <option value="rs.2500-rs.5000">RS.2500-RS.5000</option>
+        <option value="rs.5000-rs.7000">RS.5000-RS.7000</option>
+        <option value="rs.7000-rs.10000">RS.7000-RS.10000</option>
+        <option value="rs.10000-rs.15000">RS.10000-RS.15000</option>
+        <option value="rs.15000-rs.20000">RS.15000-RS.20000</option>
+        <option value="more than rs.20000">More Than RS.20000</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="maritialStatus" class="text-xl">Maritial Status</label>
+      <select name="maritialStatus" id="maritialStatus" class="b-select">
+        <option value="">----</option>
+        <option value="unmarried">Unmarried</option>
+        <option value="married">Married</option>
+        <option value="separated">Separated</option>
+        <option value="widow">Widow</option>
+        <option value="remarried">Remarried</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="durationOfIllness" class="text-xl">Duration Of Illness</label>
+      <select name="durationOfIllness" id="durationOfIllness" class="b-select">
+        <option value="">----</option>
+        <option value="sudden(few days or a week)">Sudden(Few days or a week)</option>
+        <option value="acute(few weeks to a month)">acute(Few weeks to a month)</option>
+        <option value="indidious(over many months)">Indidious(Over many months)</option>
+        <option value="not applicable(eg epilepsy/mr">Not Applicable(Eg Epilepsy/MR</option>
+        <option value="unclear">unclear</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="pastPyschiatricIllness" class="text-xl">Past Pyschiatric Illness</label>
+      <select name="pastPyschiatricIllness" id="pastPyschiatricIllness" class="b-select">
+        <option value="">----</option>
+        <option value="absent">Absent</option>
+        <option value="present">Present</option>
+        <option value="unclear">Unclear</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="gp" class="text-xl">G.P <span class="text-red-700 text-xl">*</span></label>
+      <input type="text" name="gp" id="gp" class="text-xl">
+    </div>
+    <div class="">
+      <label for="village" class="text-xl">Village <span class="text-red-700 text-xl">*</span></label>
+      <input type="text" name="village" id="village" class="text-xl">
+    </div>
+    <div class="">
+      <label for="f_h_of_mi_p_or_a" class="text-xl">Family history of MI present or absent</label>
+      <input type="checkbox" name="family_history_of_MI_present_or_absent" id="f_h_of_mi_p_or_a" class="text-xl">
+    </div>
+    <div class="">
+      <label for="i_p_s_or_m_d" class="text-xl">If Present Schizophrenia Or Mania Or Depression</label>
+      <input type="checkbox" name="if_present_schizophrenia_or_mania_or_depression" id="i_s_or_m_or_d_p_or_a" class="text-xl">
+    </div>
+    
+    <input type="submit" value="Submit" />
+    
+  </form>
+</div>
+{% endblock content %}

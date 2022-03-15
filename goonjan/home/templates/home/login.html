@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+<div class="flex flex-col justify-center items-center mt-8">
+  <h1 class="text-xl">LOGIN</h1>
+  <form action="" method="post" class="b-form">
+      {% csrf_token %}
+    <div class="">
+      <label for="username" class="text-xl">Username</label>
+      <input type="text" name="username" id="username" class="text-xl" />
+    </div>
+    <div class="">
+      <label for="password" class="text-xl">Password</label>
+      <input type="password" name="password" id="password" class="text-xl"/>
+    </div>
+    <input type="submit" value="Login">
+  </form>
+</div>
+</body>
+{% endblock content %}
