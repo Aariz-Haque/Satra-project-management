@@ -114,6 +114,22 @@ PURPOSE_OF_VISIT_CHOICES=(
     ("","MEETING WITH VILLAGE LEVEL COMMITTEE"),
     ("","OTHER"),
 )
+DIAGNOSED_BY_CHOICES=(
+    ("","Dr.J K Nath"),
+    ("","Dr.P Kalita"),
+    ("","Dr.Iftikar Hussain"),
+    ("","Dr.Sujata Borkakoty"),
+)
+DESIGNATION_CHOICES=(
+    ("","Village committe member"),
+    ("","ASHA"),
+    ("","Anganwadi"),
+    ("","ANM"),
+    ("","Neighbours"),
+    ("","Village shopkeeper"),
+    ("","Other"),
+)
+
 class Beneficiary(models.Model):
     image=models.ImageField(upload_to='home/images/',blank=True,null=True)
     name = models.CharField(max_length=200)
@@ -133,6 +149,10 @@ class Beneficiary(models.Model):
     phone=models.CharField(max_length=13,blank=True,null=True)
     email=models.EmailField(blank=True,null=True)
     diagonisis=models.CharField(max_length=200,choices=DIAGONISIS_CHOICES)
+    diagnosedBy=models.CharField(max_length=200,choices=DIAGNOSED_BY_CHOICES,default="")
+    informedBy=models.CharField(max_length=200,default='')
+    designation=models.CharField(max_length=200,choices=DESIGNATION_CHOICES,default="")
+    symptomsAsInformed=models.TextField(blank=True,null=True)
     purposeOfVisit=models.CharField(max_length=200,choices=PURPOSE_OF_VISIT_CHOICES,blank=True,null=True)
     educationHistory=models.CharField(max_length=200,choices=EDUCATION_HISTORY_CHOICES)
     familyMonthlyIncome=models.CharField(max_length=200,choices=FAMILY_MONTHLY_INCOME_CHOICES,blank=True,null=True)
