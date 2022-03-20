@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
 from .models import Beneficiary
-from .forms import BeneficiaryForm,PatientForm,ReportForm
+from .forms import BeneficiaryForm,PatientForm,ReportForm,CampForm
 import xlwt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -139,3 +139,15 @@ def add_report(request):
             messages.error(request, 'Invalid report details')
     context={'form':form}
     return render(request,"home/add_report.html",context)
+
+def add_patient_camp(request):
+    form=CampForm()
+    if request.method=="POST":
+        form=CampForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid camp details')
+    context={'form':form}
+    return render(request,"home/add_patient_camp.html",context)

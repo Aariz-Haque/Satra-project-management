@@ -1,6 +1,5 @@
-from mmap import mmap
-from re import M
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 GENDER_CHOICES=(
 ('male','MALE'),
@@ -165,7 +164,8 @@ class Beneficiary(models.Model):
     if_present_schizophrenia_or_mania_or_depression=models.BooleanField(default=False)
     def __str__(self):
         return self.name
-
+    class Meta:
+        verbose_name_plural = "Beneficiaries"
 class Patient(models.Model):
     name = models.CharField(max_length=200)
     purpose_of_visit_for_old_paitent=models.CharField(max_length=200,choices=PURPOSE_OF_VISIT_CHOICES,blank=True,null=True)
@@ -185,3 +185,23 @@ class Report(models.Model):
     date=models.DateField(auto_now=True)
     def __str__(self):
         return str(self.date)
+class Camp(models.Model):
+    name=models.CharField(max_length=200)
+    age=models.PositiveIntegerField(validators=[MaxValueValidator(150),MinValueValidator(1)])
+    sex=models.CharField(max_length=200,choices=GENDER_CHOICES)
+    village=models.CharField(max_length=200)
+    diagonisis=models.CharField(max_length=200,choices=DIAGONISIS_CHOICES)
+    identification_date=models.DateField()
+    name_of_medicine_taking=models.CharField(max_length=200)
+    screening_camp_date=models.DateField()
+    name_of_psychiatrist=models.CharField(max_length=200)
+    advice_by_psychiatrist=models.TextField()
+    counselling_by=models.CharField(max_length=200)
+    color_suggested_by_psychiatrist=models.CharField(max_length=200,choices=STATUS_OF_BENIFICIARY_CHOICES)
+    next_review_date=models.DateField()
+    submitted_by=models.CharField(max_length=200)
+    upload_prescription=models.FileField(upload_to='home/files/',blank=True,null=True)
+    def __str__(self):
+        return self.name
+    class Meta:
+        db_table = 'Patient Camp'
