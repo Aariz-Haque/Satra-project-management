@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django.forms.fields import *
 from django.contrib.admin import widgets
-from .models import Beneficiary, Patient, Report, Camp
+from .models import Beneficiary, Patient, Report, Camp,ScreeningCamp
 from .minimaldate import MinimalSplitDateTimeMultiWidget
 
 class BeneficiaryForm(ModelForm):
@@ -40,5 +40,19 @@ class CampForm(ModelForm):
         }
     # def __init__(self, *args, **kwargs):
     #     super(CampForm, self).__init__(*args, **kwargs)
+    #     self.fields['screening_camp_date'].widget=widgets.AdminDateWidget()
+    #     self.fields['next_review_date'].widget=widgets.AdminDateWidget()
+
+class ScreeningCampForm(ModelForm):
+    class Meta:
+        model=ScreeningCamp
+        fields='__all__'
+        widgets={
+            'screening_camp_date':widgets.AdminDateWidget(),
+            'next_review_date':widgets.AdminDateWidget(),
+
+        }
+    # def __init__(self, *args, **kwargs):
+    #     super(ScreeningCampForm, self).__init__(*args, **kwargs)
     #     self.fields['screening_camp_date'].widget=widgets.AdminDateWidget()
     #     self.fields['next_review_date'].widget=widgets.AdminDateWidget()

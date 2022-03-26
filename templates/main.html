@@ -41,6 +41,9 @@
             {% if request.user.is_staff%}
             <a href="{% url 'add_patient_camp' %}"class="mr-5 hover:text-gray-900">Add Patient Camp</a>
             {% endif %}
+            {% if request.user.is_staff%}
+            <a href="{% url 'add_screening_camp' %}"class="mr-5 hover:text-gray-900">Add Screening Camp</a>
+            {% endif %}
           </nav>
         </div>
       </header>
