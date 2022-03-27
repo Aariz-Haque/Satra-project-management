@@ -46,7 +46,7 @@ class CampForm(ModelForm):
 class ScreeningCampForm(ModelForm):
     class Meta:
         model=ScreeningCamp
-        fields='__all__'
+        fields=['name','dob','gender','fatherName','motherName','careGiver','relationship','address','village','phone','designation','disability','visitedBy','blood_pressure','height','weight','date_of_camp']
         widgets={
             'screening_camp_date':widgets.AdminDateWidget(),
             'next_review_date':widgets.AdminDateWidget(),

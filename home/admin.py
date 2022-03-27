@@ -5,4 +5,8 @@ admin.site.register(Beneficiary)
 admin.site.register(Patient)
 admin.site.register(Report)
 admin.site.register(Camp)
-admin.site.register(ScreeningCamp)
+
+@admin.register(ScreeningCamp)
+class ScreeningCampAdmin(admin.ModelAdmin):
+    class Media:
+        js = ('tiny.js',)

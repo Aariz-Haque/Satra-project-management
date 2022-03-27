@@ -261,5 +261,10 @@ class ScreeningCamp(models.Model):
     designation=models.CharField(max_length=200,choices=DESIGNATION_CHOICES,blank=True,null=True)
     disability=models.CharField(max_length=200,choices=DISABILITY_CHOICES,blank=True,null=True)
     visitedBy=models.CharField(max_length=200,blank=True,null=True)
+    blood_pressure=models.CharField(max_length=200,blank=True,null=True)
+    height=models.FloatField(default=0)
+    weight=models.FloatField(default=0)
+    prescription=models.TextField(blank=True,null=True)
+    date_of_camp=models.DateField()
     def __str__(self):
         return self.name

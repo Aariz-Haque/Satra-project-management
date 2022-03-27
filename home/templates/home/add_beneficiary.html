@@ -3,44 +3,44 @@
 {% block content %}
 <div class="flex flex-col justify-center items-center">
   <h1 class="text-2xl">Add Beneficiary</h1>
-  <p class="text-red-700 text-xl mb-4">Fields marked with * are compulsory</p>
+  <p class="text-red-700 text-l mb-4">Fields marked with * are compulsory</p>
   <form method="post" action="" class='b-form' enctype="multipart/form-data">
     {% csrf_token %} 
     <div class="">
-      <label for="image" class="text-xl">Image</label>
-      <input type="file" name="image" accept="image/*" id="image" class="text-xl">
+      <label for="image" class="text-l">Image</label>
+      <input type="file" name="image" accept="image/*" id="image" class="text-l">
     </div>
     <div class="">
-      <label for="name" class="text-xl">Name <span class="text-red-700 text-xl">*</span></label>
-      <input type="text" name="name" id="name" class="text-xl">
+      <label for="name" class="text-l">Name <span class="text-red-700 text-l">*</span></label>
+      <input type="text" name="name" id="name" class="text-l">
     </div>
     <div class="">
-      <span class="text-xl">Gender</span> <span class="text-red-700 text-xl">*</span>
-      <label for="male" class="text-xl">Male</label>
-      <input type="radio" name="gender" id="male" class="text-xl" value="male">
-      <label for="female" class="text-xl">Female</label>
-      <input type="radio" name="gender" id="female" class="text-xl" value="female">
-      <label for="other" class="text-xl">Other</label>
-      <input type="radio" name="gender" id="other" class="text-xl" value="other">
+      <span class="text-l">Gender</span> <span class="text-red-700 text-l">*</span>
+      <label for="male" class="text-l">Male</label>
+      <input type="radio" name="gender" id="male" class="text-l" value="male">
+      <label for="female" class="text-l">Female</label>
+      <input type="radio" name="gender" id="female" class="text-l" value="female">
+      <label for="other" class="text-l">Other</label>
+      <input type="radio" name="gender" id="other" class="text-l" value="other">
     </div>
     <div class="">
-      <label for="dob" class="text-xl">DOB <span class="text-red-700 text-xl">*</span></label>
-      <input type="date" name="dob" id="dob" class="text-xl">
+      <label for="dob" class="text-l">DOB <span class="text-red-700 text-l">*</span></label>
+      <input type="date" name="dob" id="dob" class="text-l">
     </div>
     <div class="">
-      <label for="registrationdate" class="text-xl">Registration Date <span class="text-red-700 text-xl">*</span></label>
-      <input type="date" name="registrationDate" id="registrationdate" class="text-xl">
+      <label for="registrationdate" class="text-l">Registration Date <span class="text-red-700 text-l">*</span></label>
+      <input type="date" name="registrationDate" id="registrationdate" class="text-l">
     </div>
     <div class="">
-      <label for="uora" class="text-xl">UID or Aadhaar</label>
-      <input type="text" name="uidOrAadhaar" id="uora" class="text-xl" maxlength="12">
+      <label for="uora" class="text-l">UID or Aadhaar</label>
+      <input type="text" name="uidOrAadhaar" id="uora" class="text-l" maxlength="12">
     </div>
     <div class="">
-      <label for="cgname" class="text-xl">Care Giver's Name</label>
-      <input type="text" name="careGiversName" id="cgname" class="text-xl">
+      <label for="cgname" class="text-l">Care Giver's Name</label>
+      <input type="text" name="careGiversName" id="cgname" class="text-l">
     </div>
     <div class="">
-      <label for="reletionship" class="text-xl">Reletionship</label>
+      <label for="reletionship" class="text-l">Reletionship</label>
       <select name="reletionship" id="reletionship" class="b-select">
         <option value="">----</option>
         <option value="aunt">Aunt</option>
@@ -59,7 +59,7 @@
     </div>
     
     <div class="">
-      <label for="beneficiarytype" class="text-xl">Beneficiary Type <span class="text-red-700 text-xl">*</span></label>
+      <label for="beneficiarytype" class="text-l">Beneficiary Type <span class="text-red-700 text-l">*</span></label>
       <select name="beneficiaryType" id="beneficiarytype" class="b-select">
         <option value="active">Active</option>
         <option value="inactive">Inactive</option>
@@ -68,7 +68,7 @@
       </select>
     </div>
     <div class="">
-      <label for="beneficiarystatus" class="text-xl">Status of beneficiary <span class="text-red-700 text-xl">*</span></label>
+      <label for="beneficiarystatus" class="text-l">Status of beneficiary <span class="text-red-700 text-l">*</span></label>
       <select name="statusOfBeneficiary" id="beneficiarystatus" class="b-select">
         <option value="red">Red</option>
         <option value="yellow">Yellow</option>
@@ -76,23 +76,23 @@
       </select>
     </div>
     <div class="">
-      <label for="address" class="text-xl">Address</label><br>
-      <textarea name="address" id="address" class="text-xl"></textarea>
+      <label for="address" class="text-l">Address</label><br>
+      <textarea name="address" id="address" class="text-l"></textarea>
     </div>
     <div class="">
-      <label for="district" class="text-xl">District</label>
-      <input type="text" name="district" id="district" class="text-xl">
+      <label for="district" class="text-l">District</label>
+      <input type="text" name="district" id="district" class="text-l">
     </div>
     <div class="">
-      <label for="city" class="text-xl">City <span class="text-red-700 text-xl">*</span></label>
-      <input type="text" name="city" id="city" class="text-xl">
+      <label for="city" class="text-l">City <span class="text-red-700 text-l">*</span></label>
+      <input type="text" name="city" id="city" class="text-l">
     </div>
     <div class="">
-      <label for="pinCode" class="text-xl">Pin Code</label>
-      <input type="text" name="pinCode" id="pinCode" class="text-xl">
+      <label for="pinCode" class="text-l">Pin Code</label>
+      <input type="text" name="pinCode" id="pinCode" class="text-l">
     </div>
     <div class="">
-      <label for="adrstype" class="text-xl">Address Type</label>
+      <label for="adrstype" class="text-l">Address Type</label>
       <select name="addressType" id="adrstype" class="b-select">
         <option value="">----</option>
         <option value="residence">Residence</option>
@@ -106,15 +106,15 @@
       </select>
     </div>
     <div class="">
-      <label for="phone" class="text-xl">Phone no.</label>
-      <input type="tel" name="phone" id="phone" class="text-xl" maxlength="13">
+      <label for="phone" class="text-l">Phone no.</label>
+      <input type="tel" name="phone" id="phone" class="text-l" maxlength="13">
     </div>
     <div class="">
-      <label for="email" class="text-xl">Email</label>
-      <input type="email" name="email" id="email" class="text-xl">
+      <label for="email" class="text-l">Email</label>
+      <input type="email" name="email" id="email" class="text-l">
     </div>
     <div class="">
-      <label for="diagonisis" class="text-xl">Diagonisis <span class="text-red-700 text-xl">*</span></label>
+      <label for="diagonisis" class="text-l">Diagonisis <span class="text-red-700 text-l">*</span></label>
       <select name="diagonisis" id="diagonisis" class="b-select">
         <option value="bipolar">Bipolar</option>
         <option value="schizophrenia">Schizophrenia</option>
@@ -135,7 +135,7 @@
       </select>
     </div>
     <div class="">
-      <label for="diagonisisby" class="text-xl">Diagnosed By <span class="text-red-700 text-xl">*</span></label>
+      <label for="diagonisisby" class="text-l">Diagnosed By <span class="text-red-700 text-l">*</span></label>
       <select name="diagonosedBy" id="diagonisisby" class="b-select">
         <option value="Dr.J K Nath">Dr.J K Nath</option>
         <option value="Dr.P Kalita">Dr.P Kalita</option>
@@ -145,11 +145,11 @@
       </select>
     </div>
     <div class="">
-      <label for="informedBy" class="text-xl">Informed by <span class="text-red-700 text-xl">*</span></label>
-      <input type="text" name="informedBy" id="informedBy" class="text-xl">
+      <label for="informedBy" class="text-l">Informed by <span class="text-red-700 text-l">*</span></label>
+      <input type="text" name="informedBy" id="informedBy" class="text-l">
     </div>
     <div class="">
-      <label for="designation" class="text-xl">Designation <span class="text-red-700 text-xl">*</span></label>
+      <label for="designation" class="text-l">Designation <span class="text-red-700 text-l">*</span></label>
       <select name="designation" id="designation" class="b-select">
         <option value="Village committe member">Village committe member</option>
         <option value="ASHA">ASHA</option>
@@ -161,11 +161,11 @@
       </select>
     </div>
     <div class="">
-      <label for="symptomsAsInformed" class="text-xl">Symptoms As Informed</label><br>
-      <textarea name="symptomsAsInformed" id="symptomsAsInformed" class="text-xl"></textarea>
+      <label for="symptomsAsInformed" class="text-l">Symptoms As Informed</label><br>
+      <textarea name="symptomsAsInformed" id="symptomsAsInformed" class="text-l"></textarea>
     </div>
     <div class="">
-      <label for="purposeOfVisit" class="text-xl">Purpose of Visit</label>
+      <label for="purposeOfVisit" class="text-l">Purpose of Visit</label>
       <select name="purposeOfVisit" id="purposeOfVisit" class="b-select">
         <option value="counselling">Counselling</option>
         <option value="mental health screening">Mental Health Screening</option>
@@ -175,7 +175,7 @@
       </select>
     </div>
     <div class="">
-      <label for="educationHistory" class="text-xl">Education History <span class="text-red-700 text-xl">*</span></label>
+      <label for="educationHistory" class="text-l">Education History <span class="text-red-700 text-l">*</span></label>
       <select name="educationHistory" id="educationHistory" class="b-select">
         <option value="illiterate">Illiterate</option>
         <option value="upto class v">Upto Class V</option>
@@ -187,7 +187,7 @@
       </select>
     </div>
     <div class="">
-      <label for="familyMonthlyIncome" class="text-xl">Family Monthly Income</label>
+      <label for="familyMonthlyIncome" class="text-l">Family Monthly Income</label>
       <select name="familyMonthlyIncome" id="familyMonthlyIncome" class="b-select">
         <option value="">----</option>
         <option value="less than rs.2500">Less Than RS.2500</option>
@@ -200,7 +200,7 @@
       </select>
     </div>
     <div class="">
-      <label for="maritialStatus" class="text-xl">Maritial Status</label>
+      <label for="maritialStatus" class="text-l">Maritial Status</label>
       <select name="maritialStatus" id="maritialStatus" class="b-select">
         <option value="">----</option>
         <option value="unmarried">Unmarried</option>
@@ -211,15 +211,15 @@
       </select>
     </div>
     <div class="">
-      <label for="occupation" class="text-xl">Occupation</label>
-      <input type="text" name="occupation" id="occupation" class="text-xl">
+      <label for="occupation" class="text-l">Occupation</label>
+      <input type="text" name="occupation" id="occupation" class="text-l">
     </div>
     <div class="">
-      <label for="skill" class="text-xl">Skill</label>
-      <input type="text" name="skill" id="skill" class="text-xl">
+      <label for="skill" class="text-l">Skill</label>
+      <input type="text" name="skill" id="skill" class="text-l">
     </div>
     <div class="">
-      <label for="birth" class="text-xl">birth</label>
+      <label for="birth" class="text-l">birth</label>
       <select name="birth" id="birth" class="b-select">
         <option value="">----</option>
         <option value="normal">Normal</option>
@@ -229,7 +229,7 @@
       </select>
     </div>
     <div class="">
-      <label for="durationOfIllness" class="text-xl">Duration Of Illness</label>
+      <label for="durationOfIllness" class="text-l">Duration Of Illness</label>
       <select name="durationOfIllness" id="durationOfIllness" class="b-select">
         <option value="">----</option>
         <option value="sudden(few days or a week)">Sudden(Few days or a week)</option>
@@ -240,7 +240,7 @@
       </select>
     </div>
     <div class="">
-      <label for="pastPyschiatricIllness" class="text-xl">Past Pyschiatric Illness</label>
+      <label for="pastPyschiatricIllness" class="text-l">Past Pyschiatric Illness</label>
       <select name="pastPyschiatricIllness" id="pastPyschiatricIllness" class="b-select">
         <option value="">----</option>
         <option value="absent">Absent</option>
@@ -249,20 +249,20 @@
       </select>
     </div>
     <div class="">
-      <label for="gp" class="text-xl">G.P <span class="text-red-700 text-xl">*</span></label>
-      <input type="text" name="gp" id="gp" class="text-xl">
+      <label for="gp" class="text-l">G.P <span class="text-red-700 text-l">*</span></label>
+      <input type="text" name="gp" id="gp" class="text-l">
     </div>
     <div class="">
-      <label for="village" class="text-xl">Village <span class="text-red-700 text-xl">*</span></label>
-      <input type="text" name="village" id="village" class="text-xl">
+      <label for="village" class="text-l">Village <span class="text-red-700 text-l">*</span></label>
+      <input type="text" name="village" id="village" class="text-l">
     </div>
     <div class="">
-      <label for="f_h_of_mi_p_or_a" class="text-xl">Family history of MI present or absent</label>
-      <input type="checkbox" name="family_history_of_MI_present_or_absent" id="f_h_of_mi_p_or_a" class="text-xl">
+      <label for="f_h_of_mi_p_or_a" class="text-l">Family history of MI present or absent</label>
+      <input type="checkbox" name="family_history_of_MI_present_or_absent" id="f_h_of_mi_p_or_a" class="text-l">
     </div>
     <div class="">
-      <label for="i_p_s_or_m_d" class="text-xl">If Present Schizophrenia Or Mania Or Depression</label>
-      <input type="checkbox" name="if_present_schizophrenia_or_mania_or_depression" id="i_s_or_m_or_d_p_or_a" class="text-xl">
+      <label for="i_p_s_or_m_d" class="text-l">If Present Schizophrenia Or Mania Or Depression</label>
+      <input type="checkbox" name="if_present_schizophrenia_or_mania_or_depression" id="i_s_or_m_or_d_p_or_a" class="text-l">
     </div>
     
     <input type="submit" value="Submit" />

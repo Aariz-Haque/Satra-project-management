@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #rx{
+            font-size:  30px;
+            font-weight: bold;
+             font-family: 'Times New Roman', Times, serif;
+            content: "\211E";
+        }
+    </style>
+    <title>Prescription</title>
+</head>
+<body>
+    <div class="flex flex-col justify-center items-center">
+        <h1 class="text-xl">Satra Mental Health Programme</h1>
+    </div>
+    <hr>
+    <div>
+        <span id="rx">
+            <h2>Rx</h2>
+        </span>
+    </div>
+    {{prescription|safe}}
+</body>
+</html>
