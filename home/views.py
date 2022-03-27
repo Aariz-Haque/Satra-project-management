@@ -1,6 +1,7 @@
 from datetime import datetime
+from django.db import IntegrityError
 from django.shortcuts import render,redirect,HttpResponse
-from .models import Beneficiary
+from .models import Beneficiary,Camp,ScreeningCamp
 from .forms import BeneficiaryForm,PatientForm,ReportForm,CampForm,ScreeningCampForm
 import xlwt
 from django.contrib.auth import authenticate, login, logout
@@ -139,7 +140,7 @@ def add_report(request):
             messages.error(request, 'Invalid report details')
     context={'form':form}
     return render(request,"home/add_report.html",context)
-
+@login_required(login_url='/login/')
 def add_patient_camp(request):
     form=CampForm()
     if request.method=="POST":
@@ -151,15 +152,77 @@ def add_patient_camp(request):
             messages.error(request, 'Invalid camp details')
     context={'form':form}
     return render(request,"home/add_patient_camp.html",context)
-
+@login_required(login_url='/login/')
 def add_screening_camp(request):
     form=ScreeningCampForm()
     if request.method=="POST":
         form=ScreeningCampForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
+            if request.POST.get('beneficiary')!='':
+                form.cleaned_data["name"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).name
+                form.cleaned_data["dob"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).dob
+                form.cleaned_data["gender"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).gender
+                form.cleaned_data["careGiver"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).careGiversName
+                form.cleaned_data["relationship"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).reletionship
+                form.cleaned_data["address"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).address
+                form.cleaned_data["village"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).village
+                form.cleaned_data["phone"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).phone
+                form.cleaned_data["designation"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).designation
+            form2=ScreeningCampForm(form.cleaned_data)
+            print(form.cleaned_data)
+            form2.save()
+            
             return redirect('home')
         else:
             messages.error(request, 'Invalid screening camp details')
     context={'form':form}
     return render(request,"home/add_screening_camp.html",context)
+
+def export_scamp_xls(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="camps.xls"'
+ 
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Camps')
+ 
+    # Sheet header, first row
+    row_num = 0
+ 
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+ 
+    columns = [
+    'db_id',
+    'beneficiary_code',
+    'Name',
+    'DOB',
+    'Gender',
+    'Father name',
+    'Mother name',
+    'Care Giver',
+    'Relationship',
+    'Address',
+    'Village',
+    'Phone',
+    'Designation',
+    'Disability',
+    'Visited By',
+    ]
+ 
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+ 
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+ 
+    rows = ScreeningCamp.objects.all().values_list()
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            if row[col_num].__class__.__name__ == 'date':
+                obj=row[col_num].strftime('%d-%m-%Y')
+            else:
+                 obj=row[col_num]
+            ws.write(row_num, col_num, obj, font_style) 
+    wb.save(response)
+    return response

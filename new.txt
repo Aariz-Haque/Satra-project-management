@@ -12,3 +12,13 @@ other_notes
 place_visited
 purposes={patient follow up,patient counselling,caregiver counselling,awareness meeting,livelihood rehabilitation,monitoring,meeting with village level commitee,other}
 date_of_report
+ form.cleaned_data["name"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).name
+            form.cleaned_data["dob"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).dob
+            form.cleaned_data["gender"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).gender
+            form.cleaned_data["careGiver"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).careGiversName
+            form.cleaned_data["relationship"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).reletionship
+            form.cleaned_data["address"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).address
+            form.cleaned_data["village"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).village
+            form.cleaned_data["phone"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).phone
+            form.cleaned_data["designation"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).designation
+            form.save()

@@ -106,55 +106,56 @@ PAST_PYSCHIATRIC_ILLNESS_CHOICES=(
     ("unclear","UNCLEAR"),
 )
 PURPOSE_OF_VISIT_CHOICES=(
-    ("","PATIENT FOLLOW UP"),
-    ("","PATIENT COUNSELLING"),
-    ("","CARE GIVER COUNSELLING"),
-    ("","AWARENESS MEETING"),
-    ("","LIVILIHOOD REHABILITATION"),
-    ("","MONITORING"),
-    ("","MEETING WITH VILLAGE LEVEL COMMITTEE"),
-    ("","OTHER"),
+    ("PATIENT FOLLOW UP","PATIENT FOLLOW UP"),
+    ("PATIENT COUNSELLING","PATIENT COUNSELLING"),
+    ("CARE GIVER COUNSELLING","CARE GIVER COUNSELLING"),
+    ("AWARENESS MEETING","AWARENESS MEETING"),
+    ("LIVILIHOOD REHABILITATION","LIVILIHOOD REHABILITATION"),
+    ("MONITORING","MONITORING"),
+    ("MEETING WITH VILLAGE LEVEL COMMITTEE","MEETING WITH VILLAGE LEVEL COMMITTEE"),
+    ("OTHER","OTHER"),
 )
 DIAGNOSED_BY_CHOICES=(
-    ("","Dr.J K Nath"),
-    ("","Dr.P Kalita"),
-    ("","Dr.Iftikar Hussain"),
-    ("","Dr.Sujata Borkakoty"),
-    ("","Others"),
+    ("Dr.J K Nath","Dr.J K Nath"),
+    ("Dr.P Kalita","Dr.P Kalita"),
+    ("Dr.Iftikar Hussain","Dr.Iftikar Hussain"),
+    ("Dr.Sujata Borkakoty","Dr.Sujata Borkakoty"),
+    ("Others","Others"),
 )
 DESIGNATION_CHOICES=(
-    ("","Village committe member"),
-    ("","ASHA"),
-    ("","Anganwadi"),
-    ("","ANM"),
-    ("","Neighbours"),
-    ("","Village shopkeeper"),
-    ("","Other"),
+    ("Village committe member","Village committe member"),
+    ("ASHA","ASHA"),
+    ("Anganwadi","Anganwadi"),
+    ("ANM","ANM"),
+    ("Neighbours","Neighbours"),
+    ("Village shopkeeper","Village shopkeeper"),
+    ("Other","Other"),
 )
 BLOOD_GROUP_CHOICES=(
-    ("","A+ve"),
-    ("","B+ve"),
-    ("","O+ve"),
-    ("","AB+ve"),
-    ("","A-ve"),
-    ("","B-ve"),
-    ("","O-ve"),
-    ("","AB-ve"),
+    ("A+ve","A+ve"),
+    ("B+ve","B+ve"),
+    ("O+ve","O+ve"),
+    ("AB+ve","AB+ve"),
+    ("A-ve","A-ve"),
+    ("B-ve","B-ve"),
+    ("O-ve","O-ve"),
+    ("AB-ve","AB-ve"),
 )
 BIRTH_CHOICES=(
-    ("","Normal"),
-    ("","Abnormal"),
-    ("","Other"),
+    ("normal","Normal"),
+    ("abnormal","Abnormal"),
+    ("other","Other"),
 )
 DISABILITY_CHOICES=(
-    ("","Locamator"),
-    ("","Low vision"),
-    ("","Blindness"),
-    ("","Hearing impairment"),
-    ("","Mental retardation"),
-    ("","Mental illness"),
+    ("Locamator","Locamator"),
+    ("Low vision","Low vision"),
+    ("Blindness","Blindness"),
+    ("Hearing impairment","Hearing impairment"),
+    ("Mental retardation","Mental retardation"),
+    ("Mental illness","Mental illness"),
 )
 class Beneficiary(models.Model):
+    id=models.AutoField(primary_key=True)
     image=models.ImageField(upload_to='home/images/',blank=True,null=True)
     name = models.CharField(max_length=200)
     gender=models.CharField(max_length=6,choices=GENDER_CHOICES,default='male')
@@ -246,17 +247,19 @@ class Camp(models.Model):
         db_table = 'Patient Camp'
 
 class ScreeningCamp(models.Model):
-    beneficiary=models.ForeignKey(Beneficiary,on_delete=models.CASCADE)
-    name=models.CharField(max_length=200)
-    dob=models.DateField()
-    gender=models.CharField(max_length=200,choices=GENDER_CHOICES)
+    beneficiary=models.ForeignKey(Beneficiary,on_delete=models.CASCADE,null=True,blank=True)
+    name=models.CharField(max_length=200,blank=True,null=True)
+    dob=models.DateField(blank=True,null=True)
+    gender=models.CharField(max_length=200,choices=GENDER_CHOICES,blank=True,null=True)
     fatherName=models.CharField(max_length=200)
     motherName=models.CharField(max_length=200)
-    careGiver=models.CharField(max_length=200)
-    relationship=models.CharField(max_length=200,choices=RELATIONSHIP_CHOICES)
-    address=models.TextField()
-    village=models.CharField(max_length=200)
+    careGiver=models.CharField(max_length=200,blank=True,null=True)
+    relationship=models.CharField(max_length=200,choices=RELATIONSHIP_CHOICES,blank=True,null=True)
+    address=models.TextField(blank=True,null=True)
+    village=models.CharField(max_length=200,blank=True,null=True)
     phone=models.CharField(max_length=13,blank=True,null=True)
-    designation=models.CharField(max_length=200,choices=DESIGNATION_CHOICES)
-    disability=models.CharField(max_length=200,choices=DISABILITY_CHOICES)
-    visitedBy=models.CharField(max_length=200)
+    designation=models.CharField(max_length=200,choices=DESIGNATION_CHOICES,blank=True,null=True)
+    disability=models.CharField(max_length=200,choices=DISABILITY_CHOICES,blank=True,null=True)
+    visitedBy=models.CharField(max_length=200,blank=True,null=True)
+    def __str__(self):
+        return self.name

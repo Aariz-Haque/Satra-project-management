@@ -13,7 +13,14 @@
         vertical-align: top;
     }
 </style>
+
 <div class="flex flex-col justify-center items-center">
+    <p class="leading-relaxed text-lg">
+        <pre>
+        Name,Dob,Gender,Care Giver,Relationship,address,village,phone and designation 
+                    will be autofilled if beneficiary 
+                     is selected after submission </pre>
+    </p>
     <h1 class="text-2xl">Add screening camp</h1>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
