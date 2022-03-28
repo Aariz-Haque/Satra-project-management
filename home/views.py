@@ -96,33 +96,35 @@ def export_beneficiary_xls(request):
  
     columns = [
     'db_id',
+    '',
     'Name',
     'Gender',
     'DOB',
-    'Registration Date',
-    'UID or Aadhaar',
-    "Care Giver's Name",
-    'Reletionship',
-    'Beneficiary Type',
-    'Status of Beneficiary',
-    'Address',
+    'Registration date',
+    'Id type',
+    'Id Number',
+    'Care Givers Name',
+    'Relationship',
+    'Beneficiary type',
     'District',
-    'City',
+    'Village',
     'Pin Code',
     'Address Type',
-    'Phone',
+    'Phone Number',
     'Email',
-    'Diagonisis',
-    'Purpose of Visit',
+    'Diagnosis',
+    'Diagnosed By',
+    'Informed By',
+    'Designation',
+    'Symptoms',
     'Education History',
-    'Family Monthly Income',
     'Maritial Status',
-    'Duration of Illness',
+    'Occupation',
+    'Skill',
+    'Birth Type',
+    'Duration of illness',
     'Past Pyschiatric Illness',
-    'G.P',
-    'Village',
-    'Family history of MI present or absent',
-    'If Present Schizophrenia Or Mania Or Depression'
+    'If Family History Of MI present'
     ]
  
     for col_num in range(len(columns)):
@@ -195,12 +197,21 @@ def add_screening_camp(request):
                 form.cleaned_data["name"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).name
                 form.cleaned_data["dob"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).dob
                 form.cleaned_data["gender"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).gender
-                form.cleaned_data["careGiver"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).careGiversName
-                form.cleaned_data["relationship"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).reletionship
-                form.cleaned_data["address"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).address
+                form.cleaned_data["care_giver"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).care_givers_name
+                form.cleaned_data["relationship"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).relationship
+                # form.cleaned_data["address"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).address
                 form.cleaned_data["village"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).village
                 form.cleaned_data["phone"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).phone
                 form.cleaned_data["designation"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).designation
+                form.cleaned_data["diagonisis"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).diagonisis
+                form.cleaned_data["diagnosed_by"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).diagnosed_by
+                form.cleaned_data["education_history"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).education_history
+                form.cleaned_data["maritial_status"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).maritial_status
+                form.cleaned_data["occupation"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).occupation
+                form.cleaned_data["skill"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).skill
+                form.cleaned_data["birth"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).birth
+                form.cleaned_data["duration_of_illness"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).duration_of_illness
+                form.cleaned_data["past_psychiatric_illness"]=Beneficiary.objects.get(id=request.POST.get('beneficiary')).past_pyschiatric_illness
             form2=ScreeningCampForm(form.cleaned_data)
             print(form.cleaned_data)
             form2.save()
@@ -269,7 +280,7 @@ def export_prescription(request):
         patient_id=request.POST.get('patient')
         patient=ScreeningCamp.objects.get(id=patient_id)
         template_path = 'home/prescription.html'
-        context = {'prescription':patient.prescription}
+        context = {'patient':patient}
         # Create a Django response object, and specify content_type as pdf
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="prescription.pdf"'

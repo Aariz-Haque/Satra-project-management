@@ -154,42 +154,51 @@ DISABILITY_CHOICES=(
     ("Mental retardation","Mental retardation"),
     ("Mental illness","Mental illness"),
 )
+ID_TYPE_CHOICES=(
+    ("Aadhar","Aadhar"),
+    ("Voter ID","Voter ID"),
+    ("DL","DL"),
+    ("Passport","Passport"),
+    ("Pan Card","Pan Card"),
+    ("Ration Card","Ration Card"),
+    ("other","other"),
+)
 class Beneficiary(models.Model):
-    id=models.AutoField(primary_key=True)
     image=models.ImageField(upload_to='home/images/',blank=True,null=True)
     name = models.CharField(max_length=200)
     gender=models.CharField(max_length=6,choices=GENDER_CHOICES,default='male')
     dob=models.DateField()
-    registrationDate=models.DateField()
-    uidOrAadhaar=models.CharField(blank=True,max_length=12,null=True)
-    careGiversName=models.CharField(max_length=200,blank=True,null=True)
-    reletionship=models.CharField(max_length=200,choices=RELATIONSHIP_CHOICES,default='other',blank=True,null=True)
-    beneficiaryType=models.CharField(max_length=200,choices=BENIFICIARY_TYPE_CHOICES,default='active')
-    statusOfBeneficiary=models.CharField(max_length=200,choices=STATUS_OF_BENIFICIARY_CHOICES,default='red')
-    address=models.TextField(blank=True,null=True)
+    registration_date=models.DateField()
+    # uidOrAadhaar=models.CharField(blank=True,max_length=12,null=True)
+    id_type=models.CharField(max_length=200,choices=ID_TYPE_CHOICES ,blank=True,null=True)
+    id_number=models.CharField(max_length=200,blank=True,null=True)
+    care_givers_name=models.CharField(max_length=200,blank=True,null=True)
+    relationship=models.CharField(max_length=200,choices=RELATIONSHIP_CHOICES,default='other',blank=True,null=True)
+    beneficiary_type=models.CharField(max_length=200,choices=BENIFICIARY_TYPE_CHOICES,default='active')
+    status_of_beneficiary=models.CharField(max_length=200,choices=STATUS_OF_BENIFICIARY_CHOICES,default='red')
+    # address=models.TextField(blank=True,null=True)
     district=models.CharField(max_length=200,blank=True,null=True)
-    city=models.CharField(max_length=200)
-    pinCode=models.CharField(max_length=200,blank=True,null=True)
-    addressType=models.CharField(max_length=200,choices=ADDRESS_TYPE_CHOICES,blank=True,null=True)
+    village=models.CharField(max_length=200)
+    pin_code=models.CharField(max_length=200,blank=True,null=True)
+    address_type=models.CharField(max_length=200,choices=ADDRESS_TYPE_CHOICES,blank=True,null=True)
     phone=models.CharField(max_length=13,blank=True,null=True)
     email=models.EmailField(blank=True,null=True)
     diagonisis=models.CharField(max_length=200,choices=DIAGONISIS_CHOICES)
-    diagnosedBy=models.CharField(max_length=200,choices=DIAGNOSED_BY_CHOICES,default="")
-    informedBy=models.CharField(max_length=200,default='')
+    diagnosed_by=models.CharField(max_length=200,choices=DIAGNOSED_BY_CHOICES,default="")
+    informed_by=models.CharField(max_length=200,default='')
     designation=models.CharField(max_length=200,choices=DESIGNATION_CHOICES,default="")
-    symptomsAsInformed=models.TextField(blank=True,null=True)
-    educationHistory=models.CharField(max_length=200,choices=EDUCATION_HISTORY_CHOICES)
+    symptoms_as_informed=models.TextField(blank=True,null=True)
+    education_history=models.CharField(max_length=200,choices=EDUCATION_HISTORY_CHOICES)
 
-    maritialStatus=models.CharField(max_length=200,choices=MARTIAL_STATUS_CHOICES,blank=True,null=True)
+    maritial_status=models.CharField(max_length=200,choices=MARTIAL_STATUS_CHOICES,blank=True,null=True)
     occupation=models.CharField(max_length=200,blank=True,null=True)
     skill=models.CharField(max_length=200,blank=True,null=True)
     birth=models.CharField(max_length=200,choices=BIRTH_CHOICES,blank=True,null=True)
-    durationOfIllness=models.CharField(max_length=200,choices=DURATION_OF_ILLNESS_CHOICES,blank=True,null=True)
-    pastPyschiatricIllness=models.CharField(max_length=200,choices=PAST_PYSCHIATRIC_ILLNESS_CHOICES,blank=True,null=True)
-    gp=models.CharField(max_length=200)
-    village=models.CharField(max_length=200)
-    family_history_of_MI_present_or_absent=models.BooleanField(default=False)
-    if_present_schizophrenia_or_mania_or_depression=models.BooleanField(default=False)
+    duration_of_illness=models.CharField(max_length=200,choices=DURATION_OF_ILLNESS_CHOICES,blank=True,null=True)
+    past_pyschiatric_illness=models.CharField(max_length=200,choices=PAST_PYSCHIATRIC_ILLNESS_CHOICES,blank=True,null=True)
+    
+    if_family_history_of_MI_present=models.BooleanField(default=False)
+    
     def __str__(self):
         return self.name
     class Meta:
@@ -251,20 +260,36 @@ class ScreeningCamp(models.Model):
     name=models.CharField(max_length=200,blank=True,null=True)
     dob=models.DateField(blank=True,null=True)
     gender=models.CharField(max_length=200,choices=GENDER_CHOICES,blank=True,null=True)
-    fatherName=models.CharField(max_length=200)
-    motherName=models.CharField(max_length=200)
-    careGiver=models.CharField(max_length=200,blank=True,null=True)
+    father_name=models.CharField(max_length=200,blank=True,null=True)
+    mother_name=models.CharField(max_length=200,blank=True,null=True)
+    care_giver=models.CharField(max_length=200,blank=True,null=True)
     relationship=models.CharField(max_length=200,choices=RELATIONSHIP_CHOICES,blank=True,null=True)
-    address=models.TextField(blank=True,null=True)
+    symptoms=models.TextField(blank=True,null=True)
+    diagnosis=models.CharField(max_length=200,choices=DIAGONISIS_CHOICES,blank=True,null=True)
+    diagnosed_by=models.CharField(max_length=200,choices=DIAGNOSED_BY_CHOICES,blank=True,null=True)
+    
+    education_history=models.CharField(max_length=200,choices=EDUCATION_HISTORY_CHOICES,blank=True,null=True)
+    maritial_status=models.CharField(max_length=200,choices=MARTIAL_STATUS_CHOICES,blank=True,null=True)
+    occupation=models.CharField(max_length=200,blank=True,null=True)
+    skill=models.CharField(max_length=200,blank=True,null=True)
+    birth=models.CharField(max_length=200,choices=BIRTH_CHOICES,blank=True,null=True)
+    duration_of_illness=models.CharField(max_length=200,choices=DURATION_OF_ILLNESS_CHOICES,blank=True,null=True)
+    past_pyschiatric_illness=models.CharField(max_length=200,choices=PAST_PYSCHIATRIC_ILLNESS_CHOICES,blank=True,null=True)
     village=models.CharField(max_length=200,blank=True,null=True)
     phone=models.CharField(max_length=13,blank=True,null=True)
     designation=models.CharField(max_length=200,choices=DESIGNATION_CHOICES,blank=True,null=True)
     disability=models.CharField(max_length=200,choices=DISABILITY_CHOICES,blank=True,null=True)
-    visitedBy=models.CharField(max_length=200,blank=True,null=True)
+    visited_by=models.CharField(max_length=200,blank=True,null=True)
     blood_pressure=models.CharField(max_length=200,blank=True,null=True)
     height=models.FloatField(default=0)
     weight=models.FloatField(default=0)
+    name_of_psychiatrist=models.CharField(max_length=200,blank=True,null=True)
+    name_of_medicine_taking=models.CharField(max_length=200,blank=True,null=True)
+    color_suggested_by_psychiatrist=models.CharField(max_length=200,choices=STATUS_OF_BENIFICIARY_CHOICES,blank=True,null=True)
+    next_review_date=models.DateField(blank=True,null=True)
+    identified=models.BooleanField(default=False)
+
     prescription=models.TextField(blank=True,null=True)
-    date_of_camp=models.DateField()
+    date_of_camp=models.DateField(blank=True,null=True)
     def __str__(self):
         return self.name

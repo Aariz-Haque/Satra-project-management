@@ -5,11 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <style>
-      
+        *{
+            margin: 0;
+            padding: 0;
+        }
         .b-form input,textarea,.b-select{
         border: 2px solid black;
         margin-bottom: 10px;
         }
+        .form-control{
+            border: 2px solid black;
+            margin-bottom: 10px;
+        }
+        label{
+          height: 30px;
+          vertical-align: top;
+      }
       
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,9 +49,9 @@
             {% if request.user.is_staff%}
             <a href="{% url 'add_report' %}"class="mr-5 hover:text-gray-900">Add Report</a>
             {% endif %}
-            {% if request.user.is_staff%}
+            {% comment %} {% if request.user.is_staff%}
             <a href="{% url 'add_patient_camp' %}"class="mr-5 hover:text-gray-900">Add Patient Camp</a>
-            {% endif %}
+            {% endif %} {% endcomment %}
             {% if request.user.is_staff%}
             <a href="{% url 'add_screening_camp' %}"class="mr-5 hover:text-gray-900">Add Screening Camp</a>
             {% endif %}

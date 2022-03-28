@@ -8,6 +8,10 @@ class BeneficiaryForm(ModelForm):
     class Meta:
         model=Beneficiary
         fields='__all__'
+    def __init__(self, *args, **kwargs):
+        super(BeneficiaryForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 
 class PatientForm(ModelForm):
     class Meta:
@@ -38,21 +42,23 @@ class CampForm(ModelForm):
             'next_review_date':widgets.AdminDateWidget(),
 
         }
-    # def __init__(self, *args, **kwargs):
-    #     super(CampForm, self).__init__(*args, **kwargs)
-    #     self.fields['screening_camp_date'].widget=widgets.AdminDateWidget()
-    #     self.fields['next_review_date'].widget=widgets.AdminDateWidget()
+    def __init__(self, *args, **kwargs):
+        super(CampForm, self).__init__(*args, **kwargs)
+        self.fields['screening_camp_date'].widget=widgets.AdminDateWidget()
+        self.fields['next_review_date'].widget=widgets.AdminDateWidget()
+        
 
 class ScreeningCampForm(ModelForm):
     class Meta:
         model=ScreeningCamp
-        fields=['name','dob','gender','fatherName','motherName','careGiver','relationship','address','village','phone','designation','disability','visitedBy','blood_pressure','height','weight','date_of_camp']
+        fields=['beneficiary','name','dob','gender','father_name','mother_name','care_giver','relationship','symptoms','diagnosis','diagnosed_by','education_history','maritial_status','occupation','skill','birth','duration_of_illness','past_pyschiatric_illness','village','phone','designation','disability','visited_by','blood_pressure','height','weight','name_of_psychiatrist','name_of_medicine_taking','color_suggested_by_psychiatrist','next_review_date','identified','date_of_camp']
         widgets={
             'screening_camp_date':widgets.AdminDateWidget(),
             'next_review_date':widgets.AdminDateWidget(),
 
         }
-    # def __init__(self, *args, **kwargs):
-    #     super(ScreeningCampForm, self).__init__(*args, **kwargs)
-    #     self.fields['screening_camp_date'].widget=widgets.AdminDateWidget()
-    #     self.fields['next_review_date'].widget=widgets.AdminDateWidget()
+        # fields['date_of_camp'].widget=widgets.AdminDateWidget()
+        # fields['beneficiary'].label='Beneficiary(for old patient)'
+    def __init__(self, *args, **kwargs):
+        super(ScreeningCampForm, self).__init__(*args, **kwargs)
+        self.fields['beneficiary'].label='Beneficiary(for old patient)'

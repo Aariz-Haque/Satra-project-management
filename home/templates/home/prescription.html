@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
     <style>
         #rx{
             font-size:  30px;
@@ -18,14 +18,27 @@
 </head>
 <body>
     <div class="flex flex-col justify-center items-center">
-        <h1 class="text-xl">Satra Mental Health Programme</h1>
+        <h1 class="text-xl">Community Mental Health Programme</h1>
     </div>
     <hr>
+    <div>
+        <div class="flex flex-col justify-center items-center">
+            <h2 class="text-xl">Prescription</h2>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+            <h3 class="text-xl">Name:{{patient.name}}</h3>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+            <h3 class="text-xl">DOB:{{patient.dob}}</h3>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+            <h3 class="text-xl">Sex:{{patient.gender}}
+    </div>
     <div>
         <span id="rx">
             <h2>Rx</h2>
         </span>
     </div>
-    {{prescription|safe}}
+    {{patient.prescription|safe}}
 </body>
 </html>
