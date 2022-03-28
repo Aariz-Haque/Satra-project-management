@@ -8,5 +8,6 @@ admin.site.register(Camp)
 
 @admin.register(ScreeningCamp)
 class ScreeningCampAdmin(admin.ModelAdmin):
+    search_fields = ['name','id','date_of_camp']
     class Media:
         js = ('tiny.js',)
