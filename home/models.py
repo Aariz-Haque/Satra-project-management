@@ -216,20 +216,10 @@ class Patient(models.Model):
 class Report(models.Model):
     name_of_new_patients=models.ManyToManyField(Patient,blank=True,null=True)
     name_of_old_patients=models.ManyToManyField(Patient,blank=True,null=True,related_name='old_patients')
-    place_visited=models.CharField(max_length=200)
-    no_of_family_members=models.IntegerField(default=0)
-    no_of_siblings=models.IntegerField(default=0)
-    familyMonthlyIncome=models.CharField(max_length=200,choices=FAMILY_MONTHLY_INCOME_CHOICES,blank=True,null=True)
-    height=models.FloatField(default=0)
-    weight=models.FloatField(default=0)
-    # @property
-    # def BMI(self):
-    #     return self.weight/(self.height*self.height)
-    blood_group=models.CharField(max_length=200,choices=BLOOD_GROUP_CHOICES,blank=True,null=True)
-    identification_mark=models.CharField(max_length=200,blank=True,null=True)
+    purpose_of_visit=models.CharField(max_length=200,choices=PURPOSE_OF_VISIT_CHOICES,blank=True,null=True)
     notes=models.TextField(blank=True,null=True)
-    date_of_visit=models.DateField()
-    date=models.DateField(auto_now=True)
+    
+
     def __str__(self):
         return str(self.date)
 

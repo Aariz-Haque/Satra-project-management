@@ -31,16 +31,14 @@
 </head>
 <body>
     <div class="flex flex-col justify-center items-center">
-        <h1 class="text-xl">Community Mental Health Programme</h1>
+        <h1 class="text-xl">Community Mental Health Programme implementing by SATRA</h1>
     </div>
     <hr>
     <div>
         <div class="flex flex-col justify-center items-center">
             <h2 class="text-xl">Prescription</h2>
         </div>
-        <div class="flex flex-col justify-center items-center">
-            <h3 class="text-right ">{{patient.diagnosed_by}}</h3>
-    </div>
+        
         <div class="flex flex-col justify-center items-center">
             <h3 class="text-xl">Name:{{patient.name}}</h3>
         </div>
@@ -57,7 +55,16 @@
         </span>
     </div>
     {{patient.prescription|safe}}
-
-    {{patient.date_of_camp}}
+    <div class="flex flex-col justify-center items-center">
+        <h3 class="text-xl">Date of camp:{{patient.date_of_camp}}</h3>
+</div>
+    <div class="flex flex-col justify-center items-center">
+        <h3 class="text-xl">Next Review Date:{{patient.next_review_date}}</h3>
+</div>
+    
+    
+    <div class="flex flex-col justify-center items-center">
+        <h3 class="text-right ">{{patient.name_of_psychiatrist}}</h3>
+</div>
 </body>
 </html>
