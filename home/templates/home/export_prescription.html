@@ -22,7 +22,7 @@
             <label for="patient">Patient</label>
             <select name="patient" id="patient">
                 {% for patient in patients %}
-                <option value="{{ patient.id }}">{{ patient.name }}</option>
+                <option value="{{ patient.id }}">{{patient.id}} {{ patient.name }} {{patient.date_of_camp}}</option>
                 {% endfor %}
             </select>
         <input type="submit" value="export">

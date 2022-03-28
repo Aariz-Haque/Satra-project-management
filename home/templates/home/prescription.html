@@ -5,14 +5,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+    <!-- {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %} -->
     <style>
+        @font-face {
+            font-family: '#my-font';
+            src: url('../home/ITCEDSCR.TTF') format('truetype');
+        }
         #rx{
             font-size:  30px;
             font-weight: bold;
              font-family: 'Times New Roman', Times, serif;
             content: "\211E";
         }
+        .text-right{
+            /* position: absolute;
+            right: 0;
+            top: 64px; */
+            text-align: right;
+
+            font-family: '#my-font'
+        }
+
     </style>
     <title>Prescription</title>
 </head>
@@ -26,19 +39,25 @@
             <h2 class="text-xl">Prescription</h2>
         </div>
         <div class="flex flex-col justify-center items-center">
+            <h3 class="text-right ">{{patient.diagnosed_by}}</h3>
+    </div>
+        <div class="flex flex-col justify-center items-center">
             <h3 class="text-xl">Name:{{patient.name}}</h3>
         </div>
         <div class="flex flex-col justify-center items-center">
             <h3 class="text-xl">DOB:{{patient.dob}}</h3>
         </div>
         <div class="flex flex-col justify-center items-center">
-            <h3 class="text-xl">Sex:{{patient.gender}}
+            <h3 class="text-xl">Sex:{{patient.gender}}</h3>
     </div>
+        
     <div>
         <span id="rx">
             <h2>Rx</h2>
         </span>
     </div>
     {{patient.prescription|safe}}
+
+    {{patient.date_of_camp}}
 </body>
 </html>
