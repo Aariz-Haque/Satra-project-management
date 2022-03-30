@@ -283,4 +283,4 @@ class ScreeningCamp(models.Model):
     prescription=models.TextField(blank=True,null=True)
     date_of_camp=models.DateField(blank=True,null=True)
     def __str__(self):
-        return str(self.id)
+        return str(self.id)+" "str(self.name)+" "+str(date_of_camp)
