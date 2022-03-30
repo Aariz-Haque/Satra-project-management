@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %} -->
     <style>
-        body{
+        #pres{
         font-size:24px;
         }
         @font-face {
@@ -57,6 +57,7 @@
             <h2>Rx</h2>
         </span>
     </div>
+        <div id="pres">
     {{patient.prescription|safe}}
     <div class="flex flex-col justify-center items-center">
         <h3 class="text-xl">Date of camp:{{patient.date_of_camp}}</h3>
@@ -70,6 +71,7 @@
         
         <h3 class="text-right ">{{patient.name_of_psychiatrist}}</h3>
         
+</div>
 </div>
 </body>
 </html>
