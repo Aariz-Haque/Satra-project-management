@@ -298,8 +298,11 @@ def export_prescription(request):
 
         patient_id=request.POST.get('patient')
         patient=ScreeningCamp.objects.get(id=patient_id)
+        is_other_pyschiatrist=False
+        if patient.diagnosed_by=="Others" or patient.diagnosed_by=="":
+            is_other_pyschiatrist=True
         template_path = 'home/prescription.html'
-        context = {'patient':patient}
+        context = {'patient':patient,'is_other_pyschiatrist':is_other_pyschiatrist}
         # Create a Django response object, and specify content_type as pdf
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="prescription.pdf"'

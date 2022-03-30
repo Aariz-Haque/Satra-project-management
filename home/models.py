@@ -116,10 +116,10 @@ PURPOSE_OF_VISIT_CHOICES=(
     ("OTHER","OTHER"),
 )
 DIAGNOSED_BY_CHOICES=(
-    ("Dr.J K Nath","Dr.J K Nath"),
-    ("Dr.P Kalita","Dr.P Kalita"),
-    ("Dr.Iftikar Hussain","Dr.Iftikar Hussain"),
-    ("Dr.Sujata Borkakoty","Dr.Sujata Borkakoty"),
+    ("Md.Psychiatry.Dr.J K Nath","Md.Psychiatry.Dr.J K Nath"),
+    ("Md.Psychiatry.Dr.P Kalita","Md.Psychiatry.Dr.P Kalita"),
+    ("Md.Psychiatry.Dr.Iftikar Hussain","Md.Psychiatry.Dr.Iftikar Hussain"),
+    ("Md.Psychiatry.Dr.Sujata Borkakoty","Md.Psychiatry.Dr.Sujata Borkakoty"),
     ("Others","Others"),
 )
 DESIGNATION_CHOICES=(
